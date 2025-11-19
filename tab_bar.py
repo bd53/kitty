@@ -13,7 +13,7 @@ def draw_tab(draw: DrawData, screen: Screen, tab: TabBarData, _state: int, _leng
         timer_id = add_timer(lambda _: get_boss().active_tab_manager.mark_tab_bar_dirty() if get_boss().active_tab_manager else None, 1, True)
     clock = datetime.now().strftime("%I:%M%p")
     date = datetime.now().strftime("%m.%d.%y")
-    status_right = [(as_rgb(color_as_int(opts.color15)), clock), (as_rgb(color_as_int(opts.color8)), "    " + date)]
+    status_right = [(as_rgb(color_as_int(opts.color15)), clock), (as_rgb(color_as_int(opts.color8)), " " + date)]
     status_length = sum(len(text) for _, text in status_right)
     tab_bg = screen.cursor.bg
     tab_fg = screen.cursor.fg
