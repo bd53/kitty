@@ -24,10 +24,11 @@ def draw_tab(draw: DrawData, screen: Screen, tab: TabBarData, _state: int, _leng
         screen.draw(" ")
         screen.cursor.bg = tab_bg
         draw_title(draw, screen, tab, index)
+        screen.draw(" ")
         if not needs_soft_separator:
-            screen.draw(" ")
             screen.cursor.fg = tab_bg
             screen.cursor.bg = next_tab_bg
+            screen.draw("")
         else:
             prev_fg = screen.cursor.fg
             if tab_bg == tab_fg:
@@ -37,6 +38,7 @@ def draw_tab(draw: DrawData, screen: Screen, tab: TabBarData, _state: int, _leng
                 c2 = draw.inactive_bg.contrast(draw.inactive_fg)
                 if c1 < c2:
                     screen.cursor.fg = default_bg
+            screen.draw("|")
             screen.cursor.fg = prev_fg
     if last:
         draw_attributed_string(Formatter.reset, screen)
